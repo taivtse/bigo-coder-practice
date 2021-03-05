@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="lecture1" />
+        <module name="Lecture1-DynamicArrayAndString" />
         <module name="bigo-practice" />
       </profile>
     </annotationProcessing>
