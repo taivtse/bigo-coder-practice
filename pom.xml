@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>Lecture1-DynamicArrayAndString</module>
+        <module>Lecture02AlgorithmicComplexity</module>
     </modules>
 
     <properties>
