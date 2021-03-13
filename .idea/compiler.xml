@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Lecture1-DynamicArrayAndString" />
         <module name="bigo-practice" />
         <module name="Lecture02-AlgorithmicComplexity" />
+        <module name="Lecture3-Sorting" />
+        <module name="Lecture1-DynamicArrayAndString" />
       </profile>
     </annotationProcessing>
   </component>
