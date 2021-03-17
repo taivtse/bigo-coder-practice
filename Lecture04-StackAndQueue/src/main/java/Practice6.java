@@ -1,59 +1,56 @@
-import java.util.Scanner;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
-public class Main {
-    static final int MAX = 10000 + 5;
+public class Practice6 {
 
     static class Car {
-        int id, arriveTime;
+        int arrival;
+        int finishAt;
 
-        public Car(int _id, int _arriveTime) {
-            this.id = _id;
-            this.arriveTime = _arriveTime;
+        public Car(int arrival) {
+            this.arrival = arrival;
         }
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int Q = sc.nextInt();
-        int res[] = new int[MAX];
-
-        while (Q-- > 0) {
+        int testCaseCnt = sc.nextInt();
+        for (int i = 0; i < testCaseCnt; i++) {
             Queue<Car> left = new LinkedList<>();
             Queue<Car> right = new LinkedList<>();
 
             int n = sc.nextInt();
             int t = sc.nextInt();
             int m = sc.nextInt();
-
-            for (int i = 1; i <= m; i++) {
+            List<Car> cars = new ArrayList<>(m);
+            for (int j = 1; j <= m; j++) {
                 int arrived = sc.nextInt();
                 String bank = sc.next();
 
+                Car car = new Car(arrived);
+                cars.add(car);
                 if (bank.equals("left")) {
-                    left.add(new Car(i, arrived));
+                    left.add(car);
                 } else {
-                    right.add(new Car(i, arrived));
+                    right.add(car);
                 }
             }
 
-            int curTime = 0, nextTime;
-            int waiting = (!left.isEmpty() ? 1 : 0) + (!right.isEmpty() ? 1 : 0);
+            int curTime = 0;
             Queue<Car> curBank = left;
             while (!left.isEmpty() || !right.isEmpty()) {
-                if (waiting == 1) {
-                    nextTime = (left.isEmpty() ? right.peek().arriveTime : left.peek().arriveTime);
+                int nextTime;
+                if (!left.isEmpty() && !right.isEmpty()) {
+                    nextTime = Math.min(left.peek().arrival, right.peek().arrival);
                 } else {
-                    nextTime = Math.min(left.peek().arriveTime, right.peek().arriveTime);
+                    nextTime = (left.isEmpty() ? right.peek().arrival : left.peek().arrival);
                 }
 
                 curTime = Math.max(curTime, nextTime);
                 int loadedCar = 0;
                 while (!curBank.isEmpty()) {
                     Car car = curBank.peek();
-                    if (car.arriveTime <= curTime && loadedCar < n) {
-                        res[car.id] = curTime + t;
+                    if (car.arrival <= curTime && loadedCar < n) {
+                        car.finishAt = curTime + t;
                         loadedCar++;
                         curBank.remove();
                     } else {
@@ -63,14 +60,13 @@ public class Main {
 
                 curTime += t;
                 curBank = curBank == left ? right : left;
-                waiting = (!left.isEmpty() ? 1 : 0) + (!right.isEmpty() ? 1 : 0);
             }
 
-            for (int i = 1; i <= m; i++) {
-                System.out.println(res[i]);
+            for (Car car : cars) {
+                System.out.println(car.finishAt);
             }
 
-            if (Q > 0) {
+            if (i < testCaseCnt - 1) {
                 System.out.println();
             }
         }
