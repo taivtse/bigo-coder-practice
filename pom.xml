@@ -12,6 +12,7 @@
         <module>Lecture1-DynamicArrayAndString</module>
         <module>Lecture02-AlgorithmicComplexity</module>
         <module>Lecture3-Sorting</module>
+        <module>Lecture4-StackAndQueue</module>
     </modules>
 
     <properties>

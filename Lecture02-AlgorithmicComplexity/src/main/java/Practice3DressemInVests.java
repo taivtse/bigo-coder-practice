@@ -42,7 +42,7 @@ public class Practice3DressemInVests {
         }
     }
 
-    static class Pair {
+    private static class Pair {
         public int left;
         public int right;
 

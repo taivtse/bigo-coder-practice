@@ -10,6 +10,7 @@
         <module name="Lecture02-AlgorithmicComplexity" />
         <module name="Lecture3-Sorting" />
         <module name="Lecture1-DynamicArrayAndString" />
+        <module name="Lecture4-StackAndQueue" />
       </profile>
     </annotationProcessing>
   </component>
